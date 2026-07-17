@@ -9,7 +9,27 @@ pip install -r requirements.txt
 python app.py
 ```
 
-Press `q` to quit. Press `c` to clear the canvas.
+## Controls
+
+| Key | Action |
+|-----|--------|
+| `m` | Toggle between DRAW and PATTERN mode |
+| `q` | Quit application |
+| `c` | Clear canvas |
+
+## Modes
+
+### DRAW Mode (Default)
+- **Pinch** (index + middle finger close) = SELECTION/HOVER (no drawing)
+- **Index finger up alone** = DRAW (draws lines on canvas)
+- Canvas persists across frames
+
+### PATTERN Mode
+- Detects all 5 fingers and palm landmarks
+- Draws dots at all 21 hand landmarks
+- Connects landmarks with lines to form hand skeleton
+- Finger tips (landmarks 4, 8, 12, 16, 20) shown as larger red dots
+- Live preview updates each frame
 
 ## Requirements
 
@@ -22,3 +42,4 @@ Press `q` to quit. Press `c` to clear the canvas.
    - If only Index Tip is up → **DRAW** mode. Use `cv2.line()` from `(prev_x, prev_y)` to `(curr_x, curr_y)`.
 6. Combine the webcam frame and canvas using `cv2.addWeighted()` or bitwise operations so the drawing appears boldly over the camera stream.
 7. Show frame rate (FPS) on-screen to track optimization performance.
+8. PATTERN mode: Draw hand skeleton using landmark connections and joint dots.
